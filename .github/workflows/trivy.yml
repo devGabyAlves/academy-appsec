@@ -1,0 +1,22 @@
+name: Trivy SCA Scan
+
+on:
+  workflow_call:   
+
+jobs:
+  trivy-scan:
+    name: Run Trivy SCA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scan
+        uses: aquasecurity/trivy-action@0.16.0
+        with:
+          scan-type: 'fs'             
+          severity: 'HIGH,CRITICAL'    
+          ignore-unfixed: true       
+          exit-code: '1'              
+          format: 'table'
