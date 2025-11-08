@@ -5,20 +5,27 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+    types: [opened, synchronize, reopened]
 
 permissions:
-  contents: read
+  contents: write
+  security-events: write
+  pull_requests: write
+
 
 jobs:
-  sonar:
+  sonarcloud:
     uses: ./.github/workflows/sonarcloud.yml
     secrets: inherit
 
   trivy:
     uses: ./.github/workflows/trivy.yml
+    secrets: inherit
 
   gosec:
     uses: ./.github/workflows/gosec.yml
+    secrets: inherit
 
   govulncheck:
     uses: ./.github/workflows/govulncheck.yml
+    secrets: inherit
