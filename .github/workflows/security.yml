@@ -12,14 +12,13 @@ permissions:
   pull_requests: write
 
 jobs:
-  sonar:
+  sonarcloud:
     uses: ./.github/workflows/sonarcloud.yml
     secrets: inherit
 
   trivy:
     uses: ./.github/workflows/trivy.yml
-    secrets: inherit
-    
+
   gosec:
     uses: ./.github/workflows/gosec.yml
 
