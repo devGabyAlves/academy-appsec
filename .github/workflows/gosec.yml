@@ -3,10 +3,6 @@ name: GoSec Analysis
 on:
   workflow_call:
 
-permissions:
-  security-events: write
-  contents: read
-  
 jobs:
   gosec:
     name: Run GoSec Security Scan
@@ -19,17 +15,20 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: "1.23"
+          go-version-file: ./backend/go.mod
 
       - name: Install GoSec
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
       - name: Run GoSec scan
+        working-directory: ./backend
         run: |
           gosec -fmt sarif -out gosec.sarif ./...
         continue-on-error: false
 
       - name: Upload SARIF to GHAS
+        if: ${{ hashFiles('backend/gosec.sarif') != '' }}
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: gosec.sarif
+          sarif_file: backend/gosec.sarif
+
