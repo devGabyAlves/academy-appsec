@@ -19,7 +19,7 @@ jobs:
           severity: 'HIGH,CRITICAL'    
           ignore-unfixed: true       
           exit-code: '1'              
-          format: 'table'
+          format: 'sarif'
           output: 'trivy-results.sarif'  
 
       - name: Upload Trivy scan results to GitHub Security

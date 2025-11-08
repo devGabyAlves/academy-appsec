@@ -21,6 +21,7 @@ jobs:
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
       - name: Run GoSec scan
+        working-directory: ./backend
         run: |
           gosec -fmt sarif -out gosec.sarif ./...
         continue-on-error: false
