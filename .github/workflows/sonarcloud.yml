@@ -36,7 +36,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           args: >
-            -Dsonar.projectKey=SEU_USUARIO_academy-appsec
-            -Dsonar.organization=SEU_ORGANIZACAO
+            -Dsonar.projectKey=devGabyAlves_academy-appsec
+            -Dsonar.organization=academy-appsec
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
