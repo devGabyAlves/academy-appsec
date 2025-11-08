@@ -20,9 +20,12 @@ jobs:
 
   trivy:
     uses: ./.github/workflows/trivy.yml
+    secrets: inherit
 
   gosec:
     uses: ./.github/workflows/gosec.yml
+    secrets: inherit
 
   govulncheck:
     uses: ./.github/workflows/govulncheck.yml
+    secrets: inherit
