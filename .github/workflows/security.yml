@@ -8,5 +8,5 @@ on:
 
 jobs:
   sonarcloud:
-    uses: ./.github/workflows/sonarcloud.yml  
+    uses: ./.github/workflows/sonarcloud.yml
     secrets: inherit
