@@ -3,6 +3,9 @@ name: Trivy Analysis
 on:
   workflow_call:   
 
+security:
+  contents: write
+
 jobs:
   trivy-scan:
     name: Run Trivy SCA

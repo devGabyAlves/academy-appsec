@@ -3,6 +3,10 @@ name: SonarCloud Analysis
 on:
   workflow_call:
 
+security:
+  contents: write
+  pull_requests: write
+  
 jobs:
   sonarcloud:
     name: Run SonarCloud analysis

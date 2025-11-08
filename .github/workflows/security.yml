@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: read
+  contents: write
   security-events: write
   pull_requests: write
 
@@ -18,7 +18,8 @@ jobs:
 
   trivy:
     uses: ./.github/workflows/trivy.yml
-
+    secrets: inherit
+    
   gosec:
     uses: ./.github/workflows/gosec.yml
 
