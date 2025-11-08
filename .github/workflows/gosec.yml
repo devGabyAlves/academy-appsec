@@ -3,6 +3,10 @@ name: GoSec Analysis
 on:
   workflow_call:
 
+permissions:
+  security-events: write
+  contents: read
+  
 jobs:
   gosec:
     name: Run GoSec Security Scan

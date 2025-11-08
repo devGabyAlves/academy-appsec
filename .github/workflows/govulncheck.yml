@@ -3,6 +3,9 @@ name: Go Vulnerability Check Analysis
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
   govulncheck:
     name: Run GoVulncheck
