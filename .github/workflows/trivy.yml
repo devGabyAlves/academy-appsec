@@ -3,7 +3,7 @@ name: Trivy Analysis
 on:
   workflow_call:   
 
-security:
+permissions:
   contents: write
 
 jobs:
