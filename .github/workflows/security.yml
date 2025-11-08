@@ -6,10 +6,19 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+
 jobs:
-  sonarcloud:
+  sonar:
     uses: ./.github/workflows/sonarcloud.yml
     secrets: inherit
 
   trivy:
     uses: ./.github/workflows/trivy.yml
+
+  gosec:
+    uses: ./.github/workflows/gosec.yml
+
+  govulncheck:
+    uses: ./.github/workflows/govulncheck.yml
