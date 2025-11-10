@@ -8,10 +8,44 @@ import (
 	"strings"
 )
 
-func sanitizeEmailContent(input string) string {
-	input = strings.ReplaceAll(input, "\r", "")
-	input = strings.ReplaceAll(input, "\n", " ")
-	return strings.TrimSpace(input)
+func sanitizeName(input string) string {
+	var b strings.Builder
+	for _, r := range input {
+		if (r >= 'a' && r <= 'z') ||
+			(r >= 'A' && r <= 'Z') ||
+			(r >= '0' && r <= '9') ||
+			r == ' ' || r == '-' || r == '\'' || r == '.' {
+			b.WriteRune(r)
+		}
+	}
+	return strings.TrimSpace(b.String())
+}
+
+func sanitizeEmail(input string) string {
+	var b strings.Builder
+	for _, r := range input {
+		if (r >= 'a' && r <= 'z') ||
+			(r >= 'A' && r <= 'Z') ||
+			(r >= '0' && r <= '9') ||
+			r == '@' || r == '.' || r == '-' || r == '_' {
+			b.WriteRune(r)
+		}
+	}
+	return strings.TrimSpace(b.String())
+}
+
+func sanitizeMessage(input string) string {
+	var b strings.Builder
+	for _, r := range input {
+		if r == '\r' {
+			continue
+		} else if r == '\n' {
+			b.WriteRune(' ')
+		} else if r >= 32 && r < 127 { 
+			b.WriteRune(r)
+		}
+	}
+	return strings.TrimSpace(b.String())
 }
 
 func SendContactEmail(name, email, message string) error {
@@ -22,9 +56,9 @@ func SendContactEmail(name, email, message string) error {
 	smtpPort := os.Getenv("SMTP_PORT")
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
-	safeName := sanitizeEmailContent(name)
-	safeEmail := sanitizeEmailContent(email)
-	safeMessage := sanitizeEmailContent(message)
+	safeName := sanitizeName(name)
+	safeEmail := sanitizeEmail(email)
+	safeMessage := sanitizeMessage(message)
 
 	subject := "Novo contato recebido no site"
 	body := fmt.Sprintf(
