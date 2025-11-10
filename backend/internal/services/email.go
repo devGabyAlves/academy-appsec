@@ -5,7 +5,14 @@ import (
 	"log"
 	"net/smtp"
 	"os"
+	"strings"
 )
+
+func sanitizeEmailContent(input string) string {
+	input = strings.ReplaceAll(input, "\r", "")
+	input = strings.ReplaceAll(input, "\n", " ")
+	return strings.TrimSpace(input)
+}
 
 func SendContactEmail(name, email, message string) error {
 	from := os.Getenv("SMTP_USER")
@@ -15,11 +22,14 @@ func SendContactEmail(name, email, message string) error {
 	smtpPort := os.Getenv("SMTP_PORT")
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
+	safeName := sanitizeEmailContent(name)
+	safeEmail := sanitizeEmailContent(email)
+	safeMessage := sanitizeEmailContent(message)
 
 	subject := "Novo contato recebido no site"
 	body := fmt.Sprintf(
 		"Nome: %s\nEmail: %s\n\nMensagem:\n%s",
-		name, email, message,
+		safeName, safeEmail, safeMessage,
 	)
 
 	msg := "From: " + from + "\r\n" +
