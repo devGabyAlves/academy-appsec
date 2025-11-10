@@ -59,8 +59,8 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="text-lg max-w-xl leading-relaxed mb-10"
         >
-          Quer contribuir com conteúdos, sugerir melhorias ou colaborar com o projeto?  
-          Fique à vontade para me enviar uma mensagem. Toda ajuda fortalece a comunidade! 🔐✨
+          Tem interesse em contribuir com conteúdos, sugerir melhorias ou participar do desenvolvimento da plataforma?  
+          Envie sua mensagem, toda colaboração é bem-vinda e ajuda a fortalecer a comunidade de AppSec. 🔐✨
         </motion.p>
 
         <motion.form

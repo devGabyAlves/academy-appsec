@@ -25,5 +25,5 @@ func SendEmailHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Email enviado com sucesso!"})
+	c.JSON(http.StatusOK, gin.H{"message": "Email enviado!"})
 }
