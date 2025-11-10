@@ -23,7 +23,8 @@ export default function Home() {
           transition={{ duration: 0.9, delay: 0.15 }}
           className="text-lg text-[#C5C6C7] mb-10 max-w-2xl leading-relaxed"
         >
-          A <span className="text-[#FF6A00] font-semibold">Academy AppSec</span> é uma plataforma criada para apoiar quem deseja aprender e evoluir na área de segurança de aplicações. Explore trilhas práticas, conteúdos gratuitos e recursos que unem aprendizado e comunidade.
+          Quer aprender mais sobre Segurança de Aplicações, mas não sabe por onde começar?  
+          A <span className="text-[#FF6A00] font-semibold">Academy AppSec</span> reúne trilhas, conteúdos e ferramentas para você estudar, e o melhor: tudo 100% gratuito. O objetivo aqui é simples: ajudar a comunidade a crescer e levar AppSec para mais pessoas.
         </motion.p>
 
         <motion.button
@@ -44,14 +45,26 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="text-3xl font-bold text-center mb-14 text-white"
         >
-          Por que aprender com a Academy AppSec?
+          O que você vai encontrar na Academy AppSec
         </motion.h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[ 
-            { icon: "🧠", title: "Aprenda na Prática", text: "Desenvolva suas habilidades com exercícios, desafios e ferramentas reais como Gosec, OWASP ZAP e SonarQube." },
-            { icon: "🔒", title: "Foco em Segurança", text: "Aprenda os fundamentos e as práticas modernas de AppSec, explorando desde análise de código seguro até DevSecOps." },
-            { icon: "🌐", title: "Feito pela Comunidade", text: "Um projeto open source criado por e para pessoas que acreditam que compartilhar conhecimento fortalece o ecossistema de segurança." }
+          {[
+            {
+              icon: "📚",
+              title: "Trilhas de Estudo Guiadas",
+              text: "Conteúdo organizado passo a passo para aprender AppSec sem se perder. Do básico ao avançado, no seu ritmo."
+            },
+            {
+              icon: "🛠️",
+              title: "Ferramentas e Práticas Reais",
+              text: "Aprenda usando ferramentas do mercado como GoSec, ZAP, Semgrep, Trivy, SonarQube, além de conceitos como SAST, DAST e DevSecOps."
+            },
+            {
+              icon: "💡",
+              title: "100% Gratuito e Aberto",
+              text: "Nada de paywall, curso pago ou captura de leads. Todo o conteúdo é livre para uso, estudo e comunidade."
+            }
           ].map((card, index) => (
             <motion.div
               key={index}

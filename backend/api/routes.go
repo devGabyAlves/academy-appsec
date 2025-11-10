@@ -5,11 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter() *gin.Engine {
-	router := gin.Default()
-	api:= router.Group("/api/v1")
-
-	api.GET("/health", handlers.HealthCheck)
-
-	return router
+func RegisterRoutes(r *gin.Engine) {
+	v1 := r.Group("/api/v1")
+	{
+		v1.POST("/contact", handlers.SendEmailHandler)
+	}
 }
